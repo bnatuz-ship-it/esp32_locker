@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.2.0/css/line.css">
+
+    <title>Admin Dashboard Panel</title>
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="images.jpg" alt="Logo">
+            </div>
+            <span class="logo_name">CodingLab</span>
+        </div>
+
+        <div class="menu-items">
+            <!-- Navigation Links -->
+            <ul class="nav-links">
+                <li>
+                    <a href="#profile-section">
+                        <i class="uil uil-user"></i>
+                        <span class="link-name">Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#dashboard-section">
+                        <i class="uil uil-estate"></i>
+                        <span class="link-name">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#activity-section">
+                        <i class="uil uil-history"></i>
+                        <span class="link-name">Activity</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Logout & Theme Toggle -->
+            <ul class="logout">
+                <li id="logout">
+                    <a href="#">
+                        <i class="uil uil-signout"></i>
+                        <span class="link-name">Logout</span>
+                    </a>
+                </li>
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                        <span class="link-name">Dark Mode</span>
+                    </a>
+                    <div class="mode-toggle">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard Section -->
+    <section class="dashboard">
+        
+        <!-- Top Navigation Bar -->
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>
+
+            <img src="images.jpg" alt="Profile Avatar">
+        </div>
+
+        <!-- Dashboard Content Container -->
+        <div class="dash-content">
+            
+            <!-- User Profile Section -->
+            <h1 id="profile-section">Your Profile</h1>
+            <div id="profile">
+                <p>
+                    <strong>Username:</strong>
+                    <span id="username"></span>
+                </p>
+                <p>
+                    <strong>Email:</strong>
+                    <span id="email"></span>
+                </p>
+                <p>
+                    <strong>ID Number:</strong>
+                    <span id="idnumber"></span>
+                </p>
+            </div>
+        
+            <!-- ESP32 Multi-Relay Locker Dashboard -->
+            <h1 id="dashboard-section">ESP32 Multi-Relay Dashboard</h1>
+            <div id="relayContainer"></div>
+
+            <!-- Activity Log Section -->
+            <h2 id="activity-section">Activity Log</h2>
+            <ul id="logList">
+                <li>Loading history...</li>
+            </ul>
+            <button id="exportBtn">Export Logs to CSV</button>
+
+        </div>
+    </section>
+
+    <!-- JavaScript Files -->
+    <script src="dashboard.js"></script>
+    <script type="module" src="profile.js"></script>
+    <script type="module" src="data.js"></script>
+
+</body>
+</html>

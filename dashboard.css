@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* ==========================
+   1. CSS Reset & Variables
+   ========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary-color: #8383f8;
+    --panel-color: #f9f9ff;
+    --text-color: #000000;
+    --black-light-color: #928d8d;
+    --border-color: #e4e9f7;
+    --toggle-color: #DDD;
+    --box1-color: #8b8bc7;
+    --box2-color: #a1a1b3;
+    --box3-color: #d3d3db;
+    --title-color: #fff;
+
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+}
+
+body.dark {
+    --primary-color: #3a3a3a;
+    --panel-color: #262627;
+    --text-color: #CCC;
+    --black-light-color: #928d8d;
+    --border-color: #707070;
+    --toggle-color: #ddddddc4;
+    --box1-color: #3a3a3a;
+    --box2-color: #3a3a3a;
+    --box3-color: #3a3a3a;
+    --title-color: #fff;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--primary-color);
+    transition: var(--tran-05);
+}
+
+
+/* ==========================
+   2. Sidebar Navigation
+   ========================== */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background: var(--panel-color);
+    padding: 10px 14px;
+    border-right: 1px solid var(--border-color);
+    transition: var(--tran-05);
+    z-index: 100;
+}
+
+nav.close {
+    width: 73px;
+}
+
+nav .logo-name {
+    display: flex;
+    align-items: center;
+}
+
+nav .logo-image {
+    display: flex;
+    justify-content: center;
+    min-width: 45px;
+}
+
+nav .logo-image img {
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+nav .logo-name .logo_name {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-left: 10px;
+    transition: var(--tran-05);
+}
+
+nav.close .logo_name {
+    opacity: 0;
+    pointer-events: none;
+}
+
+nav .menu-items {
+    margin-top: 40px;
+    height: calc(100% - 90px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-items li {
+    list-style: none;
+}
+
+.menu-items li a {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    text-decoration: none;
+    color: var(--text-color);
+    position: relative;
+}
+
+.nav-links li a:hover:before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background: var(--primary-color);
+}
+
+body.dark li a:hover:before {
+    background-color: var(--text-color);
+}
+
+.menu-items li a i {
+    font-size: 24px;
+    min-width: 45px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--black-light-color);
+}
+
+.menu-items li a .link-name {
+    color: var(--black-light-color);
+    font-size: 18px;
+    font-weight: 800;
+    transition: var(--tran-05);
+}
+
+nav.close li a .link-name {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Update the hover selector to include logout as well */
+.nav-links li a:hover i,
+.nav-links li a:hover .link-name,
+.logout li a:hover i,
+.logout li a:hover .link-name {
+    color: var(--primary-color);
+}
+
+/* Dark mode hover support for both nav-links and logout */
+body.dark .nav-links li a:hover i,
+body.dark .nav-links li a:hover .link-name,
+body.dark .logout li a:hover i,
+body.dark .logout li a:hover .link-name {
+    color: var(--text-color);
+}
+
+
+
+/* ==========================
+   3. Sidebar Footer (Logout & Mode)
+   ========================== */
+.menu-items .logout-mode {
+    border-top: 1px solid var(--border-color);
+    padding-top: 10px;
+}
+
+.menu-items .mode {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.menu-items .mode-toggle {
+    position: absolute;
+    right: 14px;
+    height: 50px;
+    min-width: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.mode-toggle .switch {
+    position: relative;
+    display: inline-block;
+    height: 22px;
+    width: 40px;
+    border-radius: 25px;
+    background-color: var(--toggle-color);
+}
+.logout li a:hover:before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background: var(--primary-color);
+}
+
+body.dark .logout li a:hover:before {
+    background-color: var(--text-color);
+}
+
+.switch::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: var(--panel-color);
+    transition: var(--tran-05);
+}
+
+body.dark .switch::before {
+    left: 20px;
+}
+
+
+/* ==========================
+   4. Main Dashboard Panel
+   ========================== */
+.dashboard {
+    background-color: var(--panel-color);
+    position: relative;
+    left: 250px;
+    min-height: 100vh;
+    height: auto;
+    width: calc(100% - 250px);
+    padding: 10px 14px;
+    transition: var(--tran-05);
+}
+
+nav.close ~ .dashboard {
+    left: 73px;
+    width: calc(100% - 73px);
+}
+
+.dashboard .top {
+    position: fixed;
+    top: 0;
+    left: 250px;
+    display: flex;
+    width: calc(100% - 250px);
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background-color: var(--panel-color);
+    transition: var(--tran-05);
+    z-index: 99;
+}
+
+nav.close ~ .dashboard .top {
+    left: 73px;
+    width: calc(100% - 73px);
+}
+
+.dashboard .top .sidebar-toggle {
+    color: var(--text-color);
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.dashboard .top .search-box {
+    position: relative;
+    height: 45px;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 30px;
+}
+
+.top .search-box input {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border: 1px solid var(--border-color);
+    background-color: var(--panel-color);
+    padding: 0 25px 0 50px;
+    color: var(--text-color);
+    font-size: 15px;
+    font-weight: 600;
+    outline: none;
+    border-radius: 6px;
+}
+
+.top .search-box i {
+    position: absolute;
+    left: 15px;
+    font-size: 22px;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--black-light-color);
+}
+
+.top img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+/* ==========================
+   5. Dashboard Content & Widgets
+   ========================== */
+.dashboard .dash-content {
+    padding-top: 70px;
+}
+
+.dash-content .overview {
+    width: 100%;
+    max-width: calc(100% - 250px);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 24px 28px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    background-color: var(--panel-color);
+}
+
+.dash-content .title {
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px 0;
+}
+
+.dash-content .title i {
+    position: relative;
+    height: 35px;
+    width: 35px;
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    color: var(--title-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.dash-content .title .text {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-left: 5px;
+}
+
+.dash-content .info {
+    margin-bottom: 12px;
+    font-size: 24px;
+    color: var(--text-color);
+}
